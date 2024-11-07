@@ -30,7 +30,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
       'Glass': 40,
       'Metal': 45,
       'Electronic': 100,
-      'Vegetable': 20,
+      'Organic': 20,
     };
     return pointsMap[type] || 25;
   };
@@ -39,9 +39,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
     <div className="space-y-6">
       <div className="text-center">
         <h2 className="text-2xl font-bold text-gray-800">Identify Your Waste</h2>
-        <p className="text-gray-600 mt-2">
-          Upload or take a photo of your waste item for AI-powered identification
-        </p>
+
       </div>
 
       {!selectedImage ? (
