@@ -30,7 +30,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
       'Glass': 40,
       'Metal': 45,
       'Electronic': 100,
-      'Organic': 20,
+      'Vegetable': 20,
     };
     return pointsMap[type] || 25;
   };

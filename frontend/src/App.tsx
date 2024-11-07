@@ -88,7 +88,7 @@ function App() {
             </button>
           </div>
         </div>
-      </nav>
+      </nav> 
     </div>
   );
 }
