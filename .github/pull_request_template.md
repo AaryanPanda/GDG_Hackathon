@@ -1,24 +1,18 @@
-### Pull Request Title
+### Description
+Please include a summary of the changes and the related issue. Also, explain the motivation behind this PR.
 
-**Description**
-<!-- Briefly describe the purpose of this PR, including what it addresses and why it's needed. -->
+### Related Issue
+Fixes # (issue)
 
-**Related Issue**
-<!-- Link to the issue here. If this PR closes the issue, mention "Closes #<issue-number>". -->
+### Type of change
+- [ ] Bug fix (non-breaking change which fixes an issue)
+- [ ] New feature (non-breaking change which adds functionality)
+- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
 
-**Changes Made**
-- Change 1
-- Change 2
-- Change 3
-
-**Screenshots**
-<!-- Add screenshots to illustrate the changes, if applicable. -->
-
-**Checklist**
-- [ ] My code follows the project's coding style guidelines.
-- [ ] I have reviewed and tested my changes.
-- [ ] I have added necessary documentation (if applicable).
-- [ ] I have updated dependencies (if applicable).
-
-**Additional Comments**
-<!-- Add any additional comments or questions for reviewers. -->
+### Checklist
+- [ ] My code follows the style guidelines of this project
+- [ ] I have performed a self-review of my own code
+- [ ] I have commented on my code, particularly in hard-to-understand areas
+- [ ] I have added tests that prove my fix is effective or that my feature works
+- [ ] New and existing unit tests pass locally with my changes
+- [ ] Any dependent changes have been merged and published in downstream modules
