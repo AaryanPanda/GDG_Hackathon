@@ -1,7 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import { connectToDB, isConnected } from "./database.js";
-// import userRoutes from "./routes/userRoutes.js";
+import { authenticateToken } from './middleware/auth.js';
+import pointRouter from './routes/points.routes.js';
+import userRouter from './routes/userRoutes.js';
 
 const PORT = Number(process.env.PORT);
 
@@ -22,9 +24,13 @@ app.get('/status', (req, res) => {
 });
 
 
-// app.use("/user", userRoutes)
+app.use("/user", userRouter)
 
-app.listen(PORT, async() => {
+app.use(authenticateToken);
+
+app.use('/points', pointRouter);
+
+app.listen(PORT, async () => {
     await connectToDB();
     console.log(`App running on port: ${PORT}`)
 })

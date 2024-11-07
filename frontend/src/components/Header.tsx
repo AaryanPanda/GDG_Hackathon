@@ -1,4 +1,5 @@
 import { Recycle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -10,9 +11,9 @@ const Header = () => {
             <h1 className="text-2xl font-bold text-gray-800">RecycLab</h1>
           </div>
           <div className="flex items-center space-x-4">
-            <button className="text-sm text-gray-600 hover:text-green-600">
+            <Link to="/sign-in" className="text-sm text-gray-600 hover:text-green-600">
               Sign In
-            </button>
+            </Link>
             <button className="bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700 transition-colors">
               Get Started
             </button>

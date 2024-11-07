@@ -1,12 +1,12 @@
-import User from "../models/User.js";
-import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import User from "../models/userSchema.js";
 
 const JWT_SECRET = "your_jwt_secret";  // Use an environment variable in production
 
 // Sign-Up Controller
 export const signup = async (req, res) => {
   try {
+    User
     const { username, email, password } = req.body;
 
     const existingUser = await User.findOne({ email });
@@ -48,4 +48,3 @@ export const signin = async (req, res) => {
 export const logout = (req, res) => {
   res.json({ message: "Logged out successfully" });
 };
-    
