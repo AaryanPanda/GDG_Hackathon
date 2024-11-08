@@ -6,11 +6,11 @@ import WasteInfo from './components/WasteInfo';
 import RecyclingMap from './components/RecyclingMap';
 import Dashboard from './components/Dashboard';
 import { useRecoilState } from 'recoil';
-import sectionatom from "./store/atom"
+import sectionaction from "./store/atom"
 
 function App() {
   // const [activeTab, setActiveTab] = useState('upload');
-  const [activeTab, setActiveTab] = useRecoilState(sectionatom);
+  const [activeTab, setActiveTab] = useRecoilState(sectionaction);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [wasteType, setWasteType] = useState<string | null>(null);
 

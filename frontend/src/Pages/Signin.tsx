@@ -1,5 +1,11 @@
 import { Recycle, Mail, Lock } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios";
+import { useSetRecoilState } from 'recoil';
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
+import {nameatom} from "../store/atom"
+import {tokenatom} from "../store/atom"
 
 const initialState = {
   email: '',
@@ -7,8 +13,35 @@ const initialState = {
 }
 
 const SignIn = () => {
+  const setName = useSetRecoilState(nameatom)
+  const setToken = useSetRecoilState(tokenatom);
+  const [formState, setFormState] = useState(initialState);
+  const navigate = useNavigate();
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
-    console.log(e.target.value, e.target.name);
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.value
+    })
+  }
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>)=>{
+    e.preventDefault();
+    loginUser()
+  }
+  const loginUser = async()=>{
+    try{
+      let res = await axios.post(`${backendUrl}user/signin`, {
+        data: {...formState}
+      })
+      console.log(res);
+      const {token, name} = res.data;
+      localStorage.setItem('token', token);
+      setToken(token);
+      setName(name);
+      navigate('/')
+    }catch(err){
+      console.log(err);
+    }
   }
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -56,7 +89,7 @@ const SignIn = () => {
                   id="password"
                   name="password"
                   type="password"
-                  onClick={handleChange}
+                  onChange={handleChange}
                   required
                   className="pl-10 block w-full border border-gray-300 text-lg rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
                 />
@@ -85,7 +118,7 @@ const SignIn = () => {
 
             <div>
               <button
-                type="submit"
+                onClick={handleSubmit}
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
               >
                 Sign in

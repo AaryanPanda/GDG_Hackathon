@@ -1,10 +1,11 @@
+import { useRecoilValue } from 'recoil';
 import React, { useState, useRef } from 'react';
 import { Upload, Camera, Loader2, Award } from 'lucide-react';
 import * as cocoSsd from '@tensorflow-models/coco-ssd';
 import '@tensorflow/tfjs-backend-webgl';
 import * as tf from '@tensorflow/tfjs';
 import { useSetRecoilState } from 'recoil';
-import sectionatom from '../store/atom';
+import sectionatom, { tokenatom } from '../store/atom';
 
 const ImageUpload = () => {
   const setactiveTab = useSetRecoilState(sectionatom);
@@ -12,6 +13,7 @@ const ImageUpload = () => {
   const [predictions, setPredictions] = useState([]);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [wasteType, setWasteType] = useState(null);
+  // const token = useRecoilValue(tokenatom);
   const imageRef = useRef(null);
 
   // Mock detection function - replace this with your actual detection service
@@ -34,11 +36,9 @@ const ImageUpload = () => {
       setWasteType(null);
 
       try {
-        // Call mock detection - replace with your actual detection service
         const detectedObjects = await detectObject(imageUrl);
         setPredictions(detectedObjects);
 
-        // Set waste type based on first prediction
         if (detectedObjects.length > 0) {
           setWasteType(mapObjectToWasteType(detectedObjects[0].class));
         }

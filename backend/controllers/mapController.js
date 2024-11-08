@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 
-const fetchNearbyPlaces = async (req, res) => {
+const mapController = async (req, res) => {
     const { lat, lng } = req.query;
 
     try {
@@ -16,4 +16,4 @@ const fetchNearbyPlaces = async (req, res) => {
     }
 };
 
-export default fetchNearbyPlaces;
+export default mapController;

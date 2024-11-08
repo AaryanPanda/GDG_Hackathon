@@ -1,9 +1,12 @@
 import { Recycle, Mail, Lock, User } from 'lucide-react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios";
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 
 const initialState = {
-  fullname: '',
+  name: '',
   email: '',
   password: '',
   confirmPassword: ''
@@ -11,9 +14,32 @@ const initialState = {
 
 const SignUp = () => {
   const [formState, setFormState] = useState(initialState);
-  
+  const navigate = useNavigate()
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.value
+    })
   }
+
+  const handleSubmit = (e: React.FormEvent<HTMLButtonElement>)=>{
+    e.preventDefault();
+    createUser()
+  }
+
+  const createUser = async ()=>{
+    try{
+      let res = await axios.post(`${backendUrl}user/signup`, {
+        data: {name: formState.name, email: formState.email, password: formState.password}
+      })
+      console.log(res);
+      navigate('/sign-in')
+    }catch(err){
+      console.log(err);
+    }
+  }
+  
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -41,8 +67,9 @@ const SignUp = () => {
                     id="name"
                     name="name"
                     type="text"
+                    onChange={handleChange}
                     required
-                    className="pl-10 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
+                    className="pl-10 block w-full border border-gray-300 text.lg rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
                   />
                 </div>
               </div>
@@ -59,8 +86,9 @@ const SignUp = () => {
                     id="email"
                     name="email"
                     type="email"
+                    onChange={handleChange}
                     required
-                    className="pl-10 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
+                    className="pl-10 block w-full border border-gray-300 text.lg rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
                   />
                 </div>
               </div>
@@ -77,8 +105,9 @@ const SignUp = () => {
                     id="password"
                     name="password"
                     type="password"
+                    onChange={handleChange}
                     required
-                    className="pl-10 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
+                    className="pl-10 block w-full border border-gray-300 text.lg rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
                   />
                 </div>
               </div>
@@ -95,15 +124,16 @@ const SignUp = () => {
                     id="confirm-password"
                     name="confirm-password"
                     type="password"
+                    onChange={handleChange}
                     required
-                    className="pl-10 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
+                    className="pl-10 block w-full border border-gray-300 text.lg rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
                   />
                 </div>
               </div>
   
               <div>
                 <button
-                  type="submit"
+                  onClick={handleSubmit}
                   className="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                 >
                   Create account
