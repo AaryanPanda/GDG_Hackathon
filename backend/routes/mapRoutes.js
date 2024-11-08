@@ -1,8 +1,9 @@
 import express from 'express';
-import mapsController from './mapsController.js';
+import mapController from '../controllers/mapController.js';
+
 
 const router = express.Router();
 
-router.get('/nearby-places', mapsController);
+router.get('/nearby-places', mapController);
 
 export default router;
