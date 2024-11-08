@@ -1,6 +1,15 @@
 import { Recycle, Mail, Lock } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+const initialState = {
+  email: '',
+  password: '',
+}
 
 const SignIn = () => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
+    console.log(e.target.value, e.target.name);
+  }
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -17,7 +26,7 @@ const SignIn = () => {
         <div className="bg-white py-8 px-4 shadow-lg sm:rounded-lg sm:px-10">
           <form className="space-y-6">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="email" className="block text-md font-medium text-gray-700">
                 Email address
               </label>
               <div className="mt-1 relative">
@@ -28,14 +37,15 @@ const SignIn = () => {
                   id="email"
                   name="email"
                   type="email"
+                  onChange={handleChange}
                   required
-                  className="pl-10 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
+                  className="pl-10 block w-full border border-gray-300 rounded-lg text-lg shadow-sm focus:ring-green-500 focus:border-green-500"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="password" className="block text-md font-medium text-gray-700">
                 Password
               </label>
               <div className="mt-1 relative">
@@ -46,8 +56,9 @@ const SignIn = () => {
                   id="password"
                   name="password"
                   type="password"
+                  onClick={handleChange}
                   required
-                  className="pl-10 block w-full border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
+                  className="pl-10 block w-full border border-gray-300 text-lg rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
                 />
               </div>
             </div>
@@ -95,12 +106,12 @@ const SignIn = () => {
             </div>
 
             <div className="mt-6">
-              <a
-                href="/sign-up"
+              <Link
+                to="/sign-up"
                 className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
               >
                 Create new account
-              </a>
+              </Link>
             </div>
           </div>
         </div>

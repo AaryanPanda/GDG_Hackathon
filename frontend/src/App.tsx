@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import { Upload, MapPin, BarChart3, Info } from 'lucide-react';
 import Header from './components/Header';
-import ImageUpload from './components/ImageUpload';
+import ImageUpload from './components/ImageUpload.jsx';
 import WasteInfo from './components/WasteInfo';
 import RecyclingMap from './components/RecyclingMap';
 import Dashboard from './components/Dashboard';
+import { useRecoilState } from 'recoil';
+import sectionatom from "./store/atom"
 
 function App() {
-  const [activeTab, setActiveTab] = useState('upload');
+  // const [activeTab, setActiveTab] = useState('upload');
+  const [activeTab, setActiveTab] = useRecoilState(sectionatom);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [wasteType, setWasteType] = useState<string | null>(null);
 

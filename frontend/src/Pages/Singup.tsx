@@ -1,6 +1,19 @@
 import { Recycle, Mail, Lock, User } from 'lucide-react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+const initialState = {
+  fullname: '',
+  email: '',
+  password: '',
+  confirmPassword: ''
+}
 
 const SignUp = () => {
+  const [formState, setFormState] = useState(initialState);
+  
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
+  }
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -111,12 +124,12 @@ const SignUp = () => {
               </div>
   
               <div className="mt-6">
-                <a
-                  href="/sign-in"
+                <Link 
+                  to="/sign-in"
                   className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                 >
                   Sign in instead
-                </a>
+                </Link>
               </div>
             </div>
           </div>
