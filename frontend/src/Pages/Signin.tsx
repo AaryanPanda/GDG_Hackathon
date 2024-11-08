@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Recycle, Mail, Lock, User } from 'lucide-react';
+import { Recycle, Mail, Lock } from 'lucide-react';
 
 const SignIn = () => {
   return (
@@ -97,7 +96,7 @@ const SignIn = () => {
 
             <div className="mt-6">
               <a
-                href="/signup"
+                href="/sign-up"
                 className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
               >
                 Create new account

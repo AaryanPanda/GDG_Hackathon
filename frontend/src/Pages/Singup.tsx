@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { Recycle, Mail, Lock, User } from 'lucide-react';
 
 const SignUp = () => {
@@ -113,7 +112,7 @@ const SignUp = () => {
   
               <div className="mt-6">
                 <a
-                  href="/signin"
+                  href="/sign-in"
                   className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                 >
                   Sign in instead
@@ -126,4 +125,4 @@ const SignUp = () => {
     );
   };
   
-  export { SignUp };
+  export default SignUp ;

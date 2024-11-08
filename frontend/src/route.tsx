@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import App from "./App";
-import { SignIn, SignUp } from "./page/AuthComponent";
+import  SignIn  from "./Pages/Signin";
+import  SignUp  from "./Pages/Singup";
 
 function Router() {
     return (
