@@ -4,6 +4,7 @@ import { connectToDB, isConnected } from "./database.js";
 import { authenticateToken } from './middleware/auth.js';
 import pointRouter from './routes/points.routes.js';
 import userRouter from './routes/userRoutes.js';
+import mapRoutes from './mapRoutes.js';
 
 const PORT = Number(process.env.PORT);
 
@@ -29,6 +30,7 @@ app.use("/user", userRouter)
 app.use(authenticateToken);
 
 app.use('/points', pointRouter);
+app.use('/api', mapRoutes);
 
 app.listen(PORT, async () => {
     await connectToDB();
