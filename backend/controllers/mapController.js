@@ -7,7 +7,7 @@ const mapController = async (req, res) => {
 
     try {
         const response = await axios.get(
-            `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=waste&location=${lat}%2C${lng}&radius=1500&type=waste_management&key=${GOOGLE_MAPS_API_KEY}`
+            `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=waste&location=${lat}%2C${lng}&radius=5500&type=waste_managementx&key=${GOOGLE_MAPS_API_KEY}`
         );
         res.json(response.data);
     } catch (error) {

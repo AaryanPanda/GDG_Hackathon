@@ -1,10 +1,10 @@
 import express from 'express';
 import cors from 'cors';
 import { connectToDB, isConnected } from "./database.js";
-import { authenticateToken } from './middleware/auth.js';
+// import { authenticateToken } from './middleware/auth.js';
 import pointRouter from './routes/points.routes.js';
 import userRouter from './routes/userRoutes.js';
-import mapRouter from './routes/mapRoutes.js';
+import mapRoutes from './routes/mapRoutes.js';
 
 const PORT = Number(process.env.PORT);
 
@@ -27,10 +27,9 @@ app.get('/status', (req, res) => {
 
 app.use("/user", userRouter)
 
-app.use('/api', mapRouter);
+app.use('/api', mapRoutes);
 
-app.use(authenticateToken);
-
+// app.use(authenticateToken());
 app.use('/points', pointRouter);
 
 app.listen(PORT, async () => {
