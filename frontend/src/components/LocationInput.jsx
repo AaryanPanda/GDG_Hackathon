@@ -1,15 +1,15 @@
 import React from 'react';
 
-type Location = {
-  lat: number;
-  lng: number;
-};
+// type Location = {
+//   lat: number;
+//   lng: number;
+// };
 
-type LocationInputProps = {
-  onLocationSelect: (location: Location) => void;
-};
+// type LocationInputProps = {
+// onLocationSelect: (location: Location) => void;
+// };
 
-const LocationInput: React.FC<LocationInputProps> = ({ onLocationSelect }) => {
+const LocationInput = ({ onLocationSelect }) => {
   const getLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
