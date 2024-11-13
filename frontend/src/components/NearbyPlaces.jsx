@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-type Location = {
-  lat: number;
-  lng: number;
-};
+// type Location = {
+//   lat: number;
+//   lng: number;
+// };
 
-type NearbyPlacesProps = {
-  location: Location;
-};
+// type NearbyPlacesProps = {
+//   location: Location;
+// };
 
-type Place = {
-  place_id: string;
-  name: string;
-  vicinity: string;
-  rating: number;
-  user_ratings_total: number;
-};
+// type Place = {
+//   place_id: string;
+//   name: string;
+//   vicinity: string;
+//   rating: number;
+//   user_ratings_total: number;
+// };
 
-const NearbyPlaces: React.FC<NearbyPlacesProps> = ({ location }) => {
-  const [places, setPlaces] = useState<Place[]>([]);
+const NearbyPlaces = ({ location }) => {
+  const [places, setPlaces] = useState([]);
 
   useEffect(() => {
     const fetchPlaces = async () => {
@@ -28,7 +28,11 @@ const NearbyPlaces: React.FC<NearbyPlacesProps> = ({ location }) => {
           `http://localhost:8998/api/nearby-places?lat=${location.lat}&lng=${location.lng}`
         );
         console.log(places)
+        // <<<<<<< HEAD
+        // setPlaces(response.data.results|| []);
+        // =======
         setPlaces(response.data.results.slice(0, 4) || []);
+        // >>>>>>> main
       } catch (error) {
         console.error("Error fetching nearby places:", error);
       }
